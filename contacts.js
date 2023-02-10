@@ -4,8 +4,6 @@ const contactsPath = path.resolve("./db/contacts.json");
 const { v4: uuidv4 } = require("node-uuid");
 require("colors");
 
-// TODO: задокументировать каждую функцию
-
 async function getContacts() {
   try {
     const data = await fs.readFile(contactsPath, "utf8");
@@ -17,7 +15,7 @@ async function getContacts() {
 }
 async function listContacts() {
   try {
-    const contacts = getContacts();
+    const contacts = await getContacts();
     console.table(contacts);
     return;
   } catch (error) {
